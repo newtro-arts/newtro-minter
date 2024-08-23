@@ -1,4 +1,4 @@
-import { Chain, PublicClient, createPublicClient, http } from 'viem'
+import { Chain, createPublicClient, http } from 'viem'
 import getViemNetwork from '../viem/getViemNetwork'
 
 export const getPublicClient = (chainId: number) => {
@@ -6,6 +6,6 @@ export const getPublicClient = (chainId: number) => {
   const publicClient = createPublicClient({
     chain: chain as Chain,
     transport: http(),
-  }) as any
-  return publicClient as PublicClient
+  })
+  return publicClient
 }
