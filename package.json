@@ -15,6 +15,7 @@
   "license": "MIT",
   "dependencies": {
     "@coinbase/onchainkit": "^0.27.0",
+    "@privy-io/react-auth": "^1.80.0",
     "@radix-ui/react-label": "^2.1.0",
     "@radix-ui/react-select": "^2.1.1",
     "@stackso/js-core": "^0.4.7",
@@ -55,6 +56,5 @@
     "postcss": "^8.4.35",
     "prettier": "^3.2.4",
     "typescript": "^5.3.3"
-  },
-  "packageManager": "yarn@4.4.0+sha512.91d93b445d9284e7ed52931369bc89a663414e5582d00eea45c67ddc459a2582919eece27c412d6ffd1bd0793ff35399381cb229326b961798ce4f4cc60ddfdb"
+  }
 }
