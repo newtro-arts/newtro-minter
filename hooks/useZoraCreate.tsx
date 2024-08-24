@@ -18,7 +18,6 @@ const useZoraCreate = () => {
   const createMetadata = useCreateMetadata()
   const { login, logout } = usePrivy()
   const { collectionAddress, chainId } = useCollectionProvider()
-  console.log('SWEETS COLLECTION ADDRESS: ', collectionAddress)
 
   const create = async () => {
     try {
@@ -28,7 +27,6 @@ const useZoraCreate = () => {
         return
       }
       const collectionChainId = parseInt(chainId) || CHAIN_ID
-      console.log('SWEETS collectionChainId: ', collectionChainId)
       await wallet.switchChain(collectionChainId)
       const publicClient = getPublicClient(collectionChainId)
       const creatorClient = createCreatorClient({
@@ -58,7 +56,6 @@ const useZoraCreate = () => {
             account,
           })
       const chain = getViemNetwork(collectionChainId)
-      console.log('SWEETS CHAIN: ', chain)
       const hash = await walletClient.writeContract({
         ...(parameters as any),
         chain,
@@ -70,7 +67,6 @@ const useZoraCreate = () => {
         abi: parameters.abi,
         logs: transaction.logs,
       })
-      console.log('SWEETS DECODED', decoded)
       const address = collectionAddress || (decoded[1] as any).args.newContract
       const tokenId = collectionAddress ? (decoded[3] as any).args.tokenId.toString() : 1
       window.open(`https://testnet.zora.co/collect/bsep:${address}/${tokenId}`, '_blank')
