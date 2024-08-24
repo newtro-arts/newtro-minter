@@ -3,11 +3,6 @@
 @tailwind utilities;
 @import url("https://use.typekit.net/oem5ijv.css");
 
-@font-face {
-    font-family: 'pragmatica-extended-light';
-    src: url('/fonts/pragmatica-extended-light.ttf') format('truetype');
-}
-
 
 @layer base {
   body {

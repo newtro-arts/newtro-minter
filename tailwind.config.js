@@ -37,6 +37,7 @@ module.exports = {
       },
       fontFamily: {
         nounish: ['Pragmatica', 'sans-serif'],
+        other: ['IBM Plex Mono', 'sans-serif'],
       },
     },
   },
