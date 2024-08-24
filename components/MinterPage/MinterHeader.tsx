@@ -11,9 +11,11 @@ const MinterHeader = () => {
       <p className="text-[#D1F121] text-xs font-light leading-normal text-ock-inverse">
         Chain: {chain.name || 'Not provided'}
       </p>
-      <p className="text-[#D1F121] text-xs font-light leading-normal text-ock-inverse">
-        Collection Address: {collectionAddress || 'Not provided'}
-      </p>
+      {collectionAddress && (
+        <p className="text-[#D1F121] text-xs font-light leading-normal text-ock-inverse">
+          Collection Address: {collectionAddress}
+        </p>
+      )}
     </div>
   )
 }

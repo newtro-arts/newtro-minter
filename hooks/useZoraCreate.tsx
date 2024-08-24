@@ -70,8 +70,10 @@ const useZoraCreate = () => {
         abi: parameters.abi,
         logs: transaction.logs,
       })
-      const { newContract } = (decoded[1] as any).args
-      window.open(`https://testnet.zora.co/collect/bsep:${newContract}/1`, '_blank')
+      console.log('SWEETS DECODED', decoded)
+      const address = collectionAddress || (decoded[1] as any).args.newContract
+      const tokenId = collectionAddress ? (decoded[3] as any).args.tokenId.toString() : 1
+      window.open(`https://testnet.zora.co/collect/bsep:${address}/${tokenId}`, '_blank')
       return decoded
     } catch (err) {
       console.error(err)
