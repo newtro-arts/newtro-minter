@@ -1,5 +1,4 @@
 import { useZoraCreateProvider } from '@/providers/ZoraCreateProvider'
-import { Input } from '../ui/Input'
 import { Textarea } from '../ui/Textarea'
 
 const Description = () => {

@@ -1,7 +1,6 @@
 'use client'
 
 import MainMediaUpload from './MainMediaUpload'
-import SaleStrategySelect from './SaleStrategySelect'
 import Title from './Title'
 import Animation from './Animation'
 import CreateButtons from './CreateButtons'
