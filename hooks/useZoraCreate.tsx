@@ -11,7 +11,6 @@ import useConnectedWallet from './useConnectedWallet'
 import { getPublicClient } from '@/lib/clients'
 import { Address } from 'viem'
 import useWalletTransaction from './useWalletTransaction'
-import { BigNumber } from 'ethers'
 
 const useZoraCreate = () => {
   const { connectedWallet } = useConnectedWallet()
