@@ -23,8 +23,8 @@ const useFileUpload = () => {
         throw new Error(`File size exceeds the maximum limit of ${MAX_FILE_SIZE / ONE_MB}MB.`)
       }
       const fileNameWithoutExtension = file.name.replace(/\.[^/.]+$/, '')
-      const { uri } = await uploadFile(file)
       setName(fileNameWithoutExtension)
+      const { uri } = await uploadFile(file)
       setMimeType(mimeType)
       if (isImage) {
         setImageUri(uri)
