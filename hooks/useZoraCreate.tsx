@@ -1,9 +1,7 @@
 'use client'
 
-import { useWriteContracts } from 'wagmi/experimental'
 import { createCreatorClient } from '@zoralabs/protocol-sdk'
 import { CHAIN, CHAIN_ID, REFERRAL_RECIPIENT } from '@/lib/consts'
-import useCreateSuccessRedirect from './useCreateSuccessRedirect'
 import getSalesConfig from '@/lib/zora/getSalesConfig'
 import useCreateMetadata from './useCreateMetadata'
 import { usePrivy } from '@privy-io/react-auth'
@@ -15,8 +13,6 @@ import usePrivyWalletClient from './usePrivyWalletClient'
 const useZoraCreate = () => {
   const { walletClient } = usePrivyWalletClient(CHAIN_ID)
   const { wallet, connectedWallet } = useConnectedWallet()
-  const { data: callsStatusId } = useWriteContracts()
-  useCreateSuccessRedirect(callsStatusId)
   const createMetadata = useCreateMetadata()
   const { login, logout } = usePrivy()
 
