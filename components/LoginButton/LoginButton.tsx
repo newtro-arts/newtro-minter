@@ -1,12 +1,12 @@
 import { usePrivy } from '@privy-io/react-auth'
 
 const LoginButton = () => {
-  const { ready, authenticated, login } = usePrivy()
+  const { ready, authenticated, login, logout } = usePrivy()
   const disableLogin = !ready || (ready && authenticated)
 
   return (
-    <button disabled={disableLogin} onClick={login}>
-      Log in
+    <button disabled={disableLogin} onClick={authenticated ? logout : login}>
+      Log {authenticated ? 'out' : 'in'}
     </button>
   )
 }
