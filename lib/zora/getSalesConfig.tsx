@@ -8,7 +8,7 @@ const getSalesConfig = (saleStrategy: string) => {
   } as TimedSaleParamsType
   const fixedPriceSaleConfig = {
     type: 'fixedPrice',
-    pricePerToken: BigInt(1),
+    pricePerToken: BigInt(0),
   } as FixedPriceParamsType
   return saleStrategy === 'ZoraTimedSaleStrategy' ? timedSaleConfig : fixedPriceSaleConfig
 }
