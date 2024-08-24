@@ -19,6 +19,7 @@ const usePrivyWalletClient = (chain) => {
 
     if (!connectedWallet || !chain) return
     init()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [connectedWallet, chain])
 
   return { walletClient }
