@@ -11,8 +11,10 @@ import { Address, parseEventLogs } from 'viem'
 import usePrivyWalletClient from './usePrivyWalletClient'
 import { useCollectionProvider } from '@/providers/CollectionProvider'
 import getViemNetwork from '@/lib/viem/getViemNetwork'
+import { useRouter } from 'next/navigation'
 
 const useZoraCreate = () => {
+  const { push } = useRouter()
   const { walletClient } = usePrivyWalletClient(CHAIN_ID)
   const { wallet, connectedWallet } = useConnectedWallet()
   const createMetadata = useCreateMetadata()
@@ -69,7 +71,7 @@ const useZoraCreate = () => {
       })
       const address = collectionAddress || (decoded[1] as any).args.newContract
       const tokenId = collectionAddress ? (decoded[3] as any).args.tokenId.toString() : 1
-      await window.open(`https://testnet.zora.co/collect/bsep:${address}/${tokenId}`)
+      await push(`https://testnet.zora.co/collect/bsep:${address}/${tokenId}`)
       return decoded
     } catch (err) {
       console.error(err)
