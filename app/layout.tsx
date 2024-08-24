@@ -1,6 +1,5 @@
 import '@/styles/globals.css'
 import 'react-toastify/dist/ReactToastify.css'
-import '@coinbase/onchainkit/styles.css'
 import { Analytics } from '@vercel/analytics/react'
 import { ReactNode } from 'react'
 import { ToastContainer } from 'react-toastify'

@@ -1,16 +1,14 @@
-'use client'
-
-import { useAccount } from 'wagmi'
-import DisconnectButton from './DisconnectButton'
-import useConnectWallet from '@/hooks/useConnectWallet'
+import { usePrivy } from '@privy-io/react-auth'
 import Button from '../Button'
 
 const LoginButton = () => {
-  const { address } = useAccount()
-  const { connectWallet } = useConnectWallet()
+  const { ready, authenticated, login, logout } = usePrivy()
+  const disableLogin = !ready || (ready && authenticated)
 
   return (
-    <div>{address ? <DisconnectButton /> : <Button onClick={connectWallet}>Connect </Button>}</div>
+    <Button disabled={disableLogin} onClick={authenticated ? logout : login}>
+      Log {authenticated ? 'out' : 'in'}
+    </Button>
   )
 }
 
