@@ -12,14 +12,17 @@ import Description from './Description'
 const LandingPage = () => (
   <div className="flex min-h-[100dvh] flex-col items-center justify-center bg-background px-4 py-12 sm:px-6 lg:px-8">
     <div className=" mt-2 gap-5 mx-auto max-w-md text-center items-center flex flex-col">
-      <h1 className="text-[#D1F121]  text-5xl tracking-tight font-lightest">
-        MINTER
-      </h1>
-        <p className=" mb-8 text-[#D1F121] text-xs font-ibmPlexMono font-lightest text-ock-inverse">
-          Chain: Arbitrum
-        </p>
+      <div>
+        <h1 className="text-[#D1F121] mt-8 text-5xl tracking-[-1.5%] font-lightest">
+          MINTER
+        </h1>
+          <p className="mt-2 text-[#D1F121] text-xs font-ibmPlexMono font-lightest">
+            Chain: Arbitrum
+          </p>
+
+      </div>
       <MainMediaUpload />
-      <Switch className='bg-[#D1F121]' />
+      <Switch className='bg-[#D1F121] my-2' />
       <Title />
       <Description />
       <Animation />

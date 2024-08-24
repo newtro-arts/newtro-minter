@@ -13,7 +13,7 @@ const MainMediaUpload = () => {
       <div
         className={cn(
           'w-full h-48 relative flex flex-col items-center justify-center space-y-2 text-muted-foreground rounded-tl-xl rounded-br-xl',
-          (loading || !imageUploaded) && 'border-[1px] border-[#D1F121] rounded-tl-xl rounded-br-xl',
+          (loading || !imageUploaded) && 'border-[1px] border-[#D1F121] rounded-tl-xl rounded-br-xl my-4',
         )}
       >
         <input
