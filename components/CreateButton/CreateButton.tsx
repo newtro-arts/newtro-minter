@@ -1,19 +1,22 @@
-'use client'
+'use client';
 
-import Button from '../Button'
-import { useZoraCreateProvider } from '@/providers/ZoraCreateProvider'
+import Button from '../Button';
+import { useZoraCreateProvider } from '@/providers/ZoraCreateProvider';
 
 const CreateButton = ({ chainId, children }: any) => {
-  const { create } = useZoraCreateProvider()
+  const { create } = useZoraCreateProvider();
 
   return (
     <Button
       onClick={() => create(chainId)}
-      className="font-normal bg-[#191919] border-1 border-[#D1F121] text-[#191919] px-4 py-2  duration-700 hover:text-[#D1F121] hover:shadow-lg  hover:border-[#D1F121]"
+      className="
+        text-[22px] font-light bg-[#191919] border border-[#D1F121] text-[#191919] w-full py-4 
+        px-8 duration-700 hover:text-[#D1F121] hover:shadow-lg hover:border-[#D1F121]
+      "
     >
       {children}
     </Button>
-  )
+  );
 }
 
-export default CreateButton
+export default CreateButton;

@@ -13,7 +13,7 @@ const MainMediaUpload = () => {
       <div
         className={cn(
           'w-full h-48 relative flex flex-col items-center justify-center space-y-2 text-muted-foreground rounded-tl-xl rounded-br-xl',
-          (loading || !imageUploaded) && 'border-2 border-[#D1F121] rounded-tl-xl rounded-br-xl',
+          (loading || !imageUploaded) && 'border-[1px] border-[#D1F121] rounded-tl-xl rounded-br-xl my-4',
         )}
       >
         <input
@@ -24,7 +24,7 @@ const MainMediaUpload = () => {
         />
 
         {loading ? (
-          <div className="w-8 h-8 border-2 border-black rounded-full animate-spin" />
+          <div className="w-8 h-8 border-2 border-[#D1F121] border-t-transparent rounded-full animate-spin" />
         ) : imageUploaded ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -34,7 +34,7 @@ const MainMediaUpload = () => {
           />
         ) : (
           <>
-            <UploadIcon className="w-8 h-8 text-[#d1f121]" />
+            <UploadIcon className="w-7 h-7 text-[#d1f121]" />
             <p className="text-sm font-light text-[#D1F121]"></p>
           </>
         )}
