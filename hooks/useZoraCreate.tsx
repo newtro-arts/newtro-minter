@@ -1,7 +1,7 @@
 'use client'
 
 import { createCreatorClient } from '@zoralabs/protocol-sdk'
-import { CHAIN, CHAIN_ID, REFERRAL_RECIPIENT } from '@/lib/consts'
+import { CHAIN_ID, REFERRAL_RECIPIENT } from '@/lib/consts'
 import getSalesConfig from '@/lib/zora/getSalesConfig'
 import useCreateMetadata from './useCreateMetadata'
 import { usePrivy } from '@privy-io/react-auth'
