@@ -24,7 +24,7 @@ const MainMediaUpload = () => {
         />
 
         {loading ? (
-          <div className="w-8 h-8 border-2 border-black rounded-full animate-spin" />
+          <div className="w-8 h-8 border-2 border-[#D1F121] border-t-transparent rounded-full animate-spin" />
         ) : imageUploaded ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
