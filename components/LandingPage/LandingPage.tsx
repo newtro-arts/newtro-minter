@@ -9,10 +9,13 @@ import CreateButtons from './CreateButtons'
 
 const LandingPage = () => (
   <div className="flex min-h-[100dvh] flex-col items-center justify-center bg-background px-4 py-12 sm:px-6 lg:px-8">
-    <div className="gap-5 mx-auto max-w-md text-center items-center flex flex-col gap-5">
-      <h1 className="mt-4 text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-        Zora Create
+    <div className="gap-5 mx-auto max-w-md text-center items-center flex flex-col">
+      <h1 className="text-[#D1F121] mt-4 text-4xl tracking-tight text-foreground">
+        MINTER
       </h1>
+        <p className="text-[#D1F121] text-xs font-light leading-normal text-ock-inverse">
+          Chain: Arbitrum
+        </p>
       <MainMediaUpload />
       <Title />
       <SaleStrategySelect />

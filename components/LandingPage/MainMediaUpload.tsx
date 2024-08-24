@@ -12,8 +12,8 @@ const MainMediaUpload = () => {
     <div className="grid w-full max-w-sm items-center gap-4">
       <div
         className={cn(
-          'w-full h-48 relative flex flex-col items-center justify-center space-y-2 text-muted-foreground rounded-md',
-          (loading || !imageUploaded) && 'border-dashed border-2 border-black',
+          'w-full h-48 relative flex flex-col items-center justify-center space-y-2 text-muted-foreground rounded-tl-xl rounded-br-xl',
+          (loading || !imageUploaded) && 'border-2 border-[#D1F121] rounded-tl-xl rounded-br-xl',
         )}
       >
         <input
@@ -24,18 +24,18 @@ const MainMediaUpload = () => {
         />
 
         {loading ? (
-          <div className="w-8 h-8 border-2 border-dashed border-black rounded-full animate-spin" />
+          <div className="w-8 h-8 border-2 border-black rounded-full animate-spin" />
         ) : imageUploaded ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={getIpfsLink(imageUri)}
-            className="border-dashed border-2 border-black rounded-md h-full mx-auto"
+            className=" border-[#d1f121] rounded-md h-full mx-auto"
             alt="Image Preview"
           />
         ) : (
           <>
-            <UploadIcon className="w-8 h-8" />
-            <p className="text-sm font-medium">click to upload</p>
+            <UploadIcon className="w-8 h-8 text-[#d1f121]" />
+            <p className="text-sm font-light text-[#D1F121]"></p>
           </>
         )}
       </div>
