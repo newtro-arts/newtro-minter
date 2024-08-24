@@ -3,7 +3,7 @@ import { uploadJson } from '@/lib/ipfs/uploadJson'
 import { useState } from 'react'
 
 const useCreateMetadata = () => {
-  const [name, setName] = useState<string>('CC0 Music')
+  const [name, setName] = useState<string>('Title')
   const [saleStrategy, setSaleStrategy] = useState<string>('ZoraTimedSaleStrategy')
   const [imageUri, setImageUri] = useState<string>(DEFAULT_IMAGE_URI)
   const [mimeType, setMimeType] = useState<string>('')

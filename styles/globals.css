@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url("https://use.typekit.net/oem5ijv.css");
 
 
 @font-face {
@@ -15,7 +14,6 @@
   font-style: normal;
   font-weight: 100;
 }
-
 
 @layer base {
   body {
