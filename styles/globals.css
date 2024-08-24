@@ -10,14 +10,6 @@
   }
 }
 
-#header button{
-  color: #191919;
-}
-#header button:hover{
-  color: #D1F121;
-  border-color: #191919;
-}
-
 button {
     color: #D1F121
 }
@@ -137,10 +129,4 @@ button {
 
 .no_typecursor .Typewriter__cursor {
     display: none;
-}
-
-p {
-  font-family: 'ibm-plex-mono', sans-serif;
-  font-style: normal;
-  font-weight: 100;
 }
