@@ -1,13 +1,8 @@
 'use client'
 
 import MainMediaUpload from './MainMediaUpload'
-import Title from './Title'
-import Animation from './Animation'
-import CreateButtons from './CreateButtons'
-import Description from './Description'
-
 import MinterHeader from './MinterHeader'
-import SaleStrategySwitch from './SaleStrategySwitch'
+import Details from './Details'
 
 const MinterPage = () => (
   <div className="flex min-h-[100dvh] flex-col items-center justify-center bg-background px-4 py-12 sm:px-6 lg:px-8">
@@ -15,11 +10,7 @@ const MinterPage = () => (
     <div className="gap-5 mx-auto max-w-md text-center items-center flex flex-col">
       <MinterHeader />
       <MainMediaUpload />
-      <SaleStrategySwitch />
-      <Title />
-      <Description />
-      <Animation />
-      <CreateButtons />
+      <Details />
     </div>
   </div>
 )
