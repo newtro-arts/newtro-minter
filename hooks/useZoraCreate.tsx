@@ -1,30 +1,38 @@
 'use client'
 
-import { useAccount, usePublicClient, useSwitchChain } from 'wagmi'
 import { useWriteContracts } from 'wagmi/experimental'
 import { createCreatorClient } from '@zoralabs/protocol-sdk'
-import { CHAIN_ID, REFERRAL_RECIPIENT } from '@/lib/consts'
-import { usePaymasterProvider } from '@/providers/PaymasterProvider'
+import { CHAIN, CHAIN_ID, REFERRAL_RECIPIENT } from '@/lib/consts'
 import useCreateSuccessRedirect from './useCreateSuccessRedirect'
-import useConnectWallet from './useConnectWallet'
 import getSalesConfig from '@/lib/zora/getSalesConfig'
 import useCreateMetadata from './useCreateMetadata'
+import { usePrivy } from '@privy-io/react-auth'
+import useConnectedWallet from './useConnectedWallet'
+import { getPublicClient } from '@/lib/clients'
+import { Address, parseEventLogs } from 'viem'
+import usePrivyWalletClient from './usePrivyWalletClient'
 
 const useZoraCreate = () => {
-  const publicClient = usePublicClient()!
-  const { address } = useAccount()
-  const { getCapabilities } = usePaymasterProvider()
-  const { data: callsStatusId, writeContractsAsync } = useWriteContracts()
+  const { walletClient } = usePrivyWalletClient(CHAIN_ID)
+  const { wallet, connectedWallet } = useConnectedWallet()
+  const { data: callsStatusId } = useWriteContracts()
   useCreateSuccessRedirect(callsStatusId)
-  const { connectWallet } = useConnectWallet()
   const createMetadata = useCreateMetadata()
-  const { switchChain } = useSwitchChain()
+  const { login, logout } = usePrivy()
 
-  const create = async (chainId = CHAIN_ID) => {
+  const create = async () => {
     try {
-      if (!address) await connectWallet()
-      await switchChain({ chainId })
-      const creatorClient = createCreatorClient({ chainId, publicClient })
+      if (!connectedWallet) {
+        await logout()
+        await login()
+        return
+      }
+      await wallet.switchChain(CHAIN_ID)
+      const publicClient = getPublicClient(CHAIN_ID)
+      const creatorClient = createCreatorClient({
+        chainId: CHAIN_ID,
+        publicClient,
+      })
       const { uri: cc0MusicIpfsHash } = await createMetadata.getUri()
       const salesConfig = getSalesConfig(createMetadata.saleStrategy)
       const { parameters } = await creatorClient.create1155({
@@ -37,13 +45,22 @@ const useZoraCreate = () => {
           createReferral: REFERRAL_RECIPIENT,
           salesConfig,
         },
-        account: address!,
+        account: (connectedWallet as Address)!,
       })
-      const newParameters = { ...parameters, functionName: 'createContract' }
-      await writeContractsAsync({
-        contracts: [{ ...(newParameters as any) }],
-        capabilities: getCapabilities(chainId),
-      } as any)
+      const hash = await walletClient.writeContract({
+        ...(parameters as any),
+        chain: CHAIN,
+      })
+      const transaction = await publicClient.waitForTransactionReceipt({
+        hash,
+      })
+      const decoded = parseEventLogs({
+        abi: parameters.abi,
+        logs: transaction.logs,
+      })
+      const { newContract } = (decoded[1] as any).args
+      window.open(`https://testnet.zora.co/collect/bsep:${newContract}/1`, '_blank')
+      return decoded
     } catch (err) {
       console.error(err)
     }

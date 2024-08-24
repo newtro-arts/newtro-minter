@@ -23,6 +23,7 @@ const usePoints = () => {
     }
     if (!address) return
     init()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [address])
 
   return { events, refetch, leaderboardRank }
