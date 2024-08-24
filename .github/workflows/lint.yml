@@ -26,13 +26,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'yarn'
+          cache: 'npm'
 
       - name: Install Dependencies
-        run: yarn
+        run: npm install
 
       - name: Fix Formatting
-        run: yarn format
+        run: npm run format
 
       - name: Check linting
-        run: yarn lint
+        run: npm run lint
