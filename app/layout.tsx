@@ -13,8 +13,8 @@ export const viewport = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className="font-nounish overflow-hidden">
-      <body className="overflow-hidden">
+    <html lang="en" className="font-nounish ">
+      <body className="">
         <Providers>
           <Header />
           {children}

@@ -5,7 +5,7 @@ import SaleStrategySwitch from './SaleStrategySwitch'
 import Title from './Title'
 
 const Details = () => (
-  <div className="gap-5 text-center items-center flex flex-col">
+  <div className="gap-1 text-center items-center flex flex-col">
     <SaleStrategySwitch />
     <Title />
     <Description />
