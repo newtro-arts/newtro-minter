@@ -14,7 +14,6 @@
   "author": "https://warpcast.com/sweetman-eth",
   "license": "MIT",
   "dependencies": {
-    "@coinbase/onchainkit": "^0.27.0",
     "@privy-io/react-auth": "^1.80.0",
     "@radix-ui/react-label": "^2.1.0",
     "@radix-ui/react-select": "^2.1.1",
