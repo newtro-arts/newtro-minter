@@ -1,6 +1,5 @@
 'use client'
 
-import Points from '../Points'
 import MainMediaUpload from './MainMediaUpload'
 import SaleStrategySelect from './SaleStrategySelect'
 import Title from './Title'
@@ -25,7 +24,6 @@ const LandingPage = () => (
       <Description />
       <Animation />
       <CreateButtons />
-      <Points />
     </div>
   </div>
 )
