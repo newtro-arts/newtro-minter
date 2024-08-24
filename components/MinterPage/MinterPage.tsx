@@ -5,14 +5,12 @@ import SaleStrategySelect from './SaleStrategySelect'
 import Title from './Title'
 import Animation from './Animation'
 import CreateButtons from './CreateButtons'
+import MinterHeader from './MinterHeader'
 
-const LandingPage = () => (
+const MinterPage = () => (
   <div className="flex min-h-[100dvh] flex-col items-center justify-center bg-background px-4 py-12 sm:px-6 lg:px-8">
     <div className="gap-5 mx-auto max-w-md text-center items-center flex flex-col">
-      <h1 className="text-[#D1F121] mt-4 text-4xl tracking-tight text-foreground">MINTER</h1>
-      <p className="text-[#D1F121] text-xs font-light leading-normal text-ock-inverse">
-        Chain: Arbitrum
-      </p>
+      <MinterHeader />
       <MainMediaUpload />
       <Title />
       <SaleStrategySelect />
@@ -22,4 +20,4 @@ const LandingPage = () => (
   </div>
 )
 
-export default LandingPage
+export default MinterPage
