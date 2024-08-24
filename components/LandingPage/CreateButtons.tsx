@@ -15,7 +15,7 @@ const CreateButtons = () => {
         passedOnboarding ? 'justify-between' : 'justify-center',
       )}
     >
-      <CreateButton chainId={baseSepolia.id}>Preview</CreateButton>
+      <CreateButton chainId={baseSepolia.id}>PUBLISH</CreateButton>
       {passedOnboarding && <CreateButton chainId={base.id}>Publish</CreateButton>}
     </div>
   )

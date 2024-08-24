@@ -28,15 +28,15 @@ module.exports = {
     extend: {
       colors: {
         grey: {
-          DEFAULT: '#949494',
-          light: '#f6f6f6',
+          DEFAULT: '#D1F121',
+          light: '#D1F121',
         },
         background: {
-          DEFAULT: '#f2e8cd',
+          DEFAULT: '#191919',
         },
       },
       fontFamily: {
-        nounish: ['LondrinaSolid-Regular', 'sans-serif'],
+        nounish: ['Pragmatica', 'sans-serif'],
       },
     },
   },

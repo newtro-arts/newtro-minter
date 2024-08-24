@@ -1,10 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url("https://use.typekit.net/oem5ijv.css");
 
 @font-face {
-    font-family: 'LondrinaSolid-Regular';
-    src: url('/fonts/LondrinaSolid-Regular.ttf') format('truetype');
+    font-family: 'pragmatica-extended-light';
+    src: url('/fonts/pragmatica-extended-light.ttf') format('truetype');
+}
+
+
+@layer base {
+  body {
+    font-family: 'pragmatica-extended-light', Arial, Helvetica, sans-serif
+  }
+}
+
+#header button{
+  color: #191919;
+}
+#header button:hover{
+  color: #D1F121;
+  border-color: #191919;
+}
+
+button {
+    color: #D1F121
 }
 
 @layer base {
@@ -122,4 +142,10 @@
 
 .no_typecursor .Typewriter__cursor {
     display: none;
+}
+
+p {
+  font-family: 'ibm-plex-mono', sans-serif;
+  font-style: normal;
+  font-weight: 100;
 }

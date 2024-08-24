@@ -4,7 +4,7 @@ const Button = ({ onClick, children, className }: any) => (
   <button
     onClick={onClick}
     type="button"
-    className={`cursor-pointer bg-black hover:bg-white hover:text-black font-bold leading-normal text-ock-inverse inline-flex min-w-[153px] items-center justify-center rounded-xl p-3 text-xl ${className}`}
+    className={`cursor-pointer bg-[#d1f121] text-[#191919] border border-[#191919] hover:bg-[#191919]  font- hover:text-[#d1f121] hover: font-light leading-normal text-ock-inverse inline-flex min-w-[50px] uppercase transition-all duration-700 items-center justify-center rounded-md p-2 text-sm ${className}`}
   >
     {children}
   </button>
