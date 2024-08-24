@@ -9,7 +9,7 @@ const useCreateMetadata = () => {
   const [mimeType, setMimeType] = useState<string>('')
   const [animationUri, setAnimationUri] = useState<string>(DEFAULT_ANIMATION_URI)
   const imageUploaded = DEFAULT_IMAGE_URI !== imageUri
-  const animationUploaded = DEFAULT _ANIMATION_URI !== animationUri
+  const animationUploaded = DEFAULT_ANIMATION_URI !== animationUri
 
   const getUri = async () =>
     await uploadJson({
