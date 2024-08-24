@@ -20,8 +20,8 @@ const SaleStrategySelect = () => {
         <SelectValue placeholder="Sale Strategy" />
       </SelectTrigger>
       <SelectContent className="bg-background opacity-100">
-        <SelectItem value="ZoraTimedSaleStrategy">✧111 + Uniswap V3 Pool✧</SelectItem>
-        <SelectItem value="ZoraFixedPriceSaleStrategy">✧777✧</SelectItem>
+        <SelectItem value="ZoraTimedSaleStrategy">✧ 111 ✧</SelectItem>
+        <SelectItem value="ZoraFixedPriceSaleStrategy">✧ Fixed ✧</SelectItem>
       </SelectContent>
     </Select>
   )
