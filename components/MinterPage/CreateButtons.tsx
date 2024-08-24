@@ -3,7 +3,7 @@ import CreateButton from '../CreateButton'
 
 const CreateButtons = () => (
   <div className="mt-11 flex w-full justify-center">
-    <CreateButton chainId={baseSepolia.id}>PUBLISH</CreateButton>
+    <CreateButton chainId={baseSepolia.id}>CREATE</CreateButton>
   </div>
 )
 

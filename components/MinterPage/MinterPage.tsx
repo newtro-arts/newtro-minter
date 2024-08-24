@@ -11,9 +11,9 @@ import MinterHeader from './MinterHeader'
 
 const MinterPage = () => (
   <div className="flex min-h-[100dvh] flex-col items-center justify-center bg-background px-4 py-12 sm:px-6 lg:px-8">
-    <div className=" mt-2 gap-5 mx-auto max-w-md text-center items-center flex flex-col">
+    <div className=" mt-2 gap-1 mx-auto max-w-md text-center items-center flex flex-col">
       </div>
-    <div className="gap-5 mx-auto max-w-md text-center items-center flex flex-col">
+    <div className="gap-2 mx-auto max-w-md text-center items-center flex flex-col">
       <MinterHeader />
       <MainMediaUpload />
       <Switch className='bg-[#D1F121] my-2' />
