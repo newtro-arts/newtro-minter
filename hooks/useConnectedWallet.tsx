@@ -12,8 +12,10 @@ const useConnectedWallet = () => {
   const externalWallet = externalWallets?.length ? externalWallets[0] : null
   const wallet = isAuthenticated ? externalWallet : null
   const connectedWallet = wallet?.address
+  const chainId = wallet && wallet.chainId.split(':')[1]
 
   return {
+    chainId,
     connectedWallet,
     wallet,
   }
