@@ -1,5 +1,5 @@
 import { getFrameMetadata } from 'frog/next'
-import LandingPage from '@/components/LandingPage'
+import MinterPage from '@/components/MinterPage'
 import { Metadata } from 'next'
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -10,6 +10,6 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-const Page = () => <LandingPage />
+const Page = () => <MinterPage />
 
 export default Page

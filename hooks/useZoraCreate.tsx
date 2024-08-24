@@ -9,12 +9,16 @@ import useConnectedWallet from './useConnectedWallet'
 import { getPublicClient } from '@/lib/clients'
 import { Address, parseEventLogs } from 'viem'
 import usePrivyWalletClient from './usePrivyWalletClient'
+import { useCollectionProvider } from '@/providers/CollectionProvider'
+import getViemNetwork from '@/lib/viem/getViemNetwork'
 
 const useZoraCreate = () => {
   const { walletClient } = usePrivyWalletClient(CHAIN_ID)
   const { wallet, connectedWallet } = useConnectedWallet()
   const createMetadata = useCreateMetadata()
   const { login, logout } = usePrivy()
+  const { collectionAddress, chainId } = useCollectionProvider()
+  console.log('SWEETS COLLECTION ADDRESS: ', collectionAddress)
 
   const create = async () => {
     try {
@@ -23,29 +27,41 @@ const useZoraCreate = () => {
         await login()
         return
       }
-      await wallet.switchChain(CHAIN_ID)
-      const publicClient = getPublicClient(CHAIN_ID)
+      const collectionChainId = parseInt(chainId) || CHAIN_ID
+      console.log('SWEETS collectionChainId: ', collectionChainId)
+      await wallet.switchChain(collectionChainId)
+      const publicClient = getPublicClient(collectionChainId)
       const creatorClient = createCreatorClient({
-        chainId: CHAIN_ID,
+        chainId: collectionChainId,
         publicClient,
       })
       const { uri: cc0MusicIpfsHash } = await createMetadata.getUri()
       const salesConfig = getSalesConfig(createMetadata.saleStrategy)
-      const { parameters } = await creatorClient.create1155({
-        contract: {
-          name: createMetadata.name,
-          uri: cc0MusicIpfsHash,
-        },
-        token: {
-          tokenMetadataURI: cc0MusicIpfsHash,
-          createReferral: REFERRAL_RECIPIENT,
-          salesConfig,
-        },
-        account: (connectedWallet as Address)!,
-      })
+      const token = {
+        tokenMetadataURI: cc0MusicIpfsHash,
+        createReferral: REFERRAL_RECIPIENT,
+        salesConfig,
+      }
+      const account = (connectedWallet as Address)!
+      const { parameters } = collectionAddress
+        ? await creatorClient.create1155OnExistingContract({
+            contractAddress: collectionAddress,
+            token,
+            account,
+          })
+        : await creatorClient.create1155({
+            contract: {
+              name: createMetadata.name,
+              uri: cc0MusicIpfsHash,
+            },
+            token,
+            account,
+          })
+      const chain = getViemNetwork(collectionChainId)
+      console.log('SWEETS CHAIN: ', chain)
       const hash = await walletClient.writeContract({
         ...(parameters as any),
-        chain: CHAIN,
+        chain,
       })
       const transaction = await publicClient.waitForTransactionReceipt({
         hash,

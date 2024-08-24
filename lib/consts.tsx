@@ -1,3 +1,4 @@
+import { Address } from 'viem'
 import { base, baseSepolia } from 'wagmi/chains'
 
 export const IS_TESTNET = process.env.NEXT_PUBLIC_TEST === 'true'
@@ -10,7 +11,7 @@ export const DROP_ADDRESS = IS_TESTNET
   : '0x16F1FC98282AFDA367999012027b5A3fA656a713' // base mainnet
 export const ZORA_PRICE = '777000000000000'
 export const COMMENT = 'myco.wtf'
-export const REFERRAL_RECIPIENT = '0x749B7b7A6944d72266Be9500FC8C221B6A7554Ce'
+export const REFERRAL_RECIPIENT = '0x749B7b7A6944d72266Be9500FC8C221B6A7554Ce' as Address
 
 // STACK EVENTS
 export const FIRST_SMART_WALLET_LOGIN_EVENT = 'first_smart_wallet_login'
