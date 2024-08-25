@@ -1,7 +1,7 @@
 'use client'
 
 import { createCreatorClient } from '@zoralabs/protocol-sdk'
-import { CHAIN_ID, REFERRAL_RECIPIENT } from '@/lib/consts'
+import { CHAIN_ID, DROP_ADDRESS, REFERRAL_RECIPIENT } from '@/lib/consts'
 import getSalesConfig from '@/lib/zora/getSalesConfig'
 import useCreateMetadata from './useCreateMetadata'
 import { usePrivy } from '@privy-io/react-auth'
@@ -9,7 +9,6 @@ import useConnectedWallet from './useConnectedWallet'
 import { getPublicClient } from '@/lib/clients'
 import { Address, parseEventLogs } from 'viem'
 import usePrivyWalletClient from './usePrivyWalletClient'
-import { useCollectionProvider } from '@/providers/CollectionProvider'
 import getViemNetwork from '@/lib/viem/getViemNetwork'
 import { useRouter } from 'next/navigation'
 
@@ -19,7 +18,6 @@ const useZoraCreate = () => {
   const { wallet, connectedWallet } = useConnectedWallet()
   const createMetadata = useCreateMetadata()
   const { login, logout } = usePrivy()
-  const { collectionAddress, chainId } = useCollectionProvider()
 
   const create = async () => {
     try {
@@ -28,11 +26,11 @@ const useZoraCreate = () => {
         await login()
         return
       }
-      const collectionChainId = parseInt(chainId) || CHAIN_ID
+      const collectionChainId = CHAIN_ID
       await wallet.switchChain(collectionChainId)
       const publicClient = getPublicClient(collectionChainId)
       const creatorClient = createCreatorClient({
-        chainId: collectionChainId,
+        chainId: CHAIN_ID,
         publicClient,
       })
       const { uri: cc0MusicIpfsHash } = await createMetadata.getUri()
@@ -43,20 +41,12 @@ const useZoraCreate = () => {
         salesConfig,
       }
       const account = (connectedWallet as Address)!
-      const { parameters } = collectionAddress
-        ? await creatorClient.create1155OnExistingContract({
-            contractAddress: collectionAddress,
-            token,
-            account,
-          })
-        : await creatorClient.create1155({
-            contract: {
-              name: createMetadata.name,
-              uri: cc0MusicIpfsHash,
-            },
-            token,
-            account,
-          })
+      const { parameters } = await creatorClient.create1155OnExistingContract({
+        contractAddress: DROP_ADDRESS,
+        token,
+        account,
+      })
+
       const chain = getViemNetwork(collectionChainId)
       const hash = await walletClient.writeContract({
         ...(parameters as any),
@@ -69,8 +59,8 @@ const useZoraCreate = () => {
         abi: parameters.abi,
         logs: transaction.logs,
       })
-      const address = collectionAddress || (decoded[1] as any).args.newContract
-      const tokenId = collectionAddress ? (decoded[3] as any).args.tokenId.toString() : 1
+      const address = DROP_ADDRESS || (decoded[1] as any).args.newContract
+      const tokenId = DROP_ADDRESS ? (decoded[3] as any).args.tokenId.toString() : 1
       await push(`http://newtro.xyz/collect/bsep:${address}/${tokenId}`)
       return decoded
     } catch (err) {

@@ -1,14 +1,14 @@
 import { Address } from 'viem'
-import { base, baseSepolia } from 'wagmi/chains'
+import { arbitrum, baseSepolia } from 'wagmi/chains'
 
 export const IS_TESTNET = process.env.NEXT_PUBLIC_TEST === 'true'
-export const CHAIN = IS_TESTNET ? baseSepolia : base
+export const CHAIN = IS_TESTNET ? baseSepolia : arbitrum
 export const CHAIN_ID = CHAIN.id
 
 // Zora
 export const DROP_ADDRESS = IS_TESTNET
-  ? '0x0b93a56db47797142076e24c520c846c9bd0d6fa' // base sepolia
-  : '0x16F1FC98282AFDA367999012027b5A3fA656a713' // base mainnet
+  ? '0x54f038c3c9E643D08d1e385833CD80AAdC62C54c' // base sepolia
+  : '0x765cee6ff107f2b8c20c71ac34ff38776fd39d3e' // arbitrum one
 export const ZORA_PRICE = '777000000000000'
 export const COMMENT = 'myco.wtf'
 export const REFERRAL_RECIPIENT = '0x749B7b7A6944d72266Be9500FC8C221B6A7554Ce' as Address
