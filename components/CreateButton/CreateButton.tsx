@@ -10,7 +10,7 @@ const CreateButton = ({ chainId, children }: any) => {
     <Button
       onClick={() => create(chainId)}
       className="
-        text-[32px] font-light bg-[#191919] border border-[#D1F121] text-[#191919] w-full py-4 
+        text-[28px] font-light bg-[#191919] border border-[#D1F121] text-[#191919] w-full py-4 
         px-8 duration-700 hover:text-[#D1F121] hover:shadow-lg hover:border-[#D1F121]
       "
     >
