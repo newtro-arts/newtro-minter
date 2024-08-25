@@ -8,12 +8,15 @@ import {
   baseSepolia,
   optimismSepolia,
   base,
+  arbitrum,
 } from 'viem/chains'
 
 const getViemNetwork = (chainId: number) => {
   switch (chainId) {
     case mainnet.id:
       return mainnet
+    case arbitrum.id:
+      return arbitrum
     case polygon.id:
       return polygon
     case base.id:
