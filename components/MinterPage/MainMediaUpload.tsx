@@ -9,11 +9,11 @@ const MainMediaUpload = () => {
   const { fileUpload, loading, error } = useFileUpload()
 
   return (
-    <div className="grid w-full max-w-sm items-center gap-4">
+    <div className="grid w-full items-center gap-4 max-w-48">
       <div
         className={cn(
-          'w-full h-48 relative flex flex-col items-center justify-center space-y-2 text-muted-foreground rounded-tl-xl rounded-br-xl',
-          (loading || !imageUploaded) && 'border-[1px] border-[#D1F121] rounded-tl-xl rounded-br-xl my-4',
+          'w-full h-48 relative flex flex-col items-center justify-center space-y-2 text-muted-foreground rounded-tl-xl rounded-br-xl	',
+          (loading || !imageUploaded) && 'border-[1px] border-[#D1F121] rounded-tl-xl rounded-br-xl my-4 ',
         )}
       >
         <input
