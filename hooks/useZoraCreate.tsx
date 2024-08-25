@@ -71,9 +71,7 @@ const useZoraCreate = () => {
       })
       const address = collectionAddress || (decoded[1] as any).args.newContract
       const tokenId = collectionAddress ? (decoded[3] as any).args.tokenId.toString() : 1
-      await push(
-        `http://newtro-v2-git-test-newtros-projects.vercel.app/collect/bsep:${address}/${tokenId}`,
-      )
+      await push(`http://newtro.xyz/collect/bsep:${address}/${tokenId}`)
       return decoded
     } catch (err) {
       console.error(err)
