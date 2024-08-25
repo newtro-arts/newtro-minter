@@ -1,4 +1,4 @@
-# LORA CREATE
+# Newtro Minter
 
 ## Setup
 
