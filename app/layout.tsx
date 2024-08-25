@@ -14,7 +14,7 @@ export const viewport = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className="font-nounish">
-      <body className="">
+      <body>
         <Providers>
           <Header />
           {children}
