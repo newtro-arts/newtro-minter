@@ -1,7 +1,7 @@
 'use client'
 
 import { createCreatorClient } from '@zoralabs/protocol-sdk'
-import { CHAIN_ID, DROP_ADDRESS, REFERRAL_RECIPIENT } from '@/lib/consts'
+import { CHAIN_ID, DROP_ADDRESS, IS_TESTNET, REFERRAL_RECIPIENT } from '@/lib/consts'
 import getSalesConfig from '@/lib/zora/getSalesConfig'
 import useCreateMetadata from './useCreateMetadata'
 import { usePrivy } from '@privy-io/react-auth'
@@ -61,7 +61,7 @@ const useZoraCreate = () => {
       })
       const address = DROP_ADDRESS || (decoded[1] as any).args.newContract
       const tokenId = DROP_ADDRESS ? (decoded[3] as any).args.tokenId.toString() : 1
-      await push(`http://newtro.xyz/collect/bsep:${address}/${tokenId}`)
+      await push(`http://newtro.xyz/collect/${IS_TESTNET ? 'bsep' : 'arb'}:${address}/${tokenId}`)
       return decoded
     } catch (err) {
       console.error(err)
